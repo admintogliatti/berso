@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БЕРСО | Благоустройство центральной площади, г. Тольятти</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Фирменные цвета со скриншотов */
+            --color-primary: #5d7d8a; /* Серо-синий цвет блоков */
+            --color-primary-dark: #4a6570;
+            --color-accent: #3ba142; /* Зеленый цвет ящерицы */
+            --color-bg: #f8f9fa;
+            --color-text: #333333;
+            --color-white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* --- Шапка сайта --- */
+        header {
+            background-color: var(--color-white);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+
+        .logo-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-title span {
+            color: var(--color-accent);
+        }
+
+        .contact-info {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--color-text);
+        }
+
+        /* --- Главный экран (Hero) --- */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        /* --- Секция с панорамами --- */
+        .panoramas-section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: var(--color-primary);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- Карточка панорамы --- */
+        .pano-card {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-decoration: none;
+            color: var(--color-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Декоративная линия сверху карточки */
+        .pano-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .pano-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: transparent;
+        }
+
+        .pano-card:hover::before {
+            background-color: var(--color-accent);
+        }
+
+        .pano-card:hover .icon-wrapper svg {
+            stroke: var(--color-accent);
+            transform: scale(1.1);
+        }
+
+        .icon-wrapper {
+            margin-bottom: 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper svg {
+            width: 50px;
+            height: 50px;
+            stroke: var(--color-primary);
+            stroke-width: 1.5;
+            fill: none;
+            transition: var(--transition);
+        }
+
+        .pano-date {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .pano-desc {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Подвал --- */
+        footer {
+            text-align: center;
+            padding: 30px 5%;
+            background-color: var(--color-white);
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid #eaeaea;
+            margin-top: 50px;
+        }
+
+        /* --- Адаптивность (Мобильная версия) --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .logo-subtitle {
+                font-size: 8px;
+            }
+
+            .logo-title {
+                font-size: 28px;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 50px 5%;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero h2 {
+                font-size: 18px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .panoramas-section {
+                padding: 50px 5%;
+            }
+
+            .section-title {
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="logo-container">
+            <span class="logo-subtitle">Проектирование и благоустройство<br>городской среды</span>
+            <!-- Имитация логотипа с зеленой буквой О, как на скрине -->
+            <div class="logo-title">БЕРС<span>О</span></div>
+        </div>
+        <div class="contact-info">
+            +7 (846) 219-88-00
+        </div>
+    </header>
+
+    <!-- Главный экран презентации -->
+    <section class="hero">
+        <h1>Центральная площадь</h1>
+        <h2>г. Тольятти</h2>
+        <p>Интерактивный контроль хода строительно-монтажных работ и благоустройства объекта</p>
+    </section>
+
+    <!-- Сетка с панорамами -->
+    <section class="panoramas-section">
+        <h3 class="section-title">Аэросъемка 360°</h3>
+        
+        <div class="grid-container">
+            
+            <!-- Плашка панорамы за 31 марта -->
+            <a href="31.03.html" class="pano-card">
+                <div class="icon-wrapper">
+                    <!-- Технологичная SVG иконка дрона -->
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v4M12 18v4M4 12H2M22 12h-2M12 12m-3 0a3 3 0 1 0 6 0 3 3 0 1 0 -6 0M6.5 6.5l2 2M17.5 17.5l-2-2M6.5 17.5l2-2M17.5 6.5l-2 2"/>
+                        <circle cx="5" cy="5" r="2"/>
+                        <circle cx="19" cy="5" r="2"/>
+                        <circle cx="5" cy="19" r="2"/>
+                        <circle cx="19" cy="19" r="2"/>
+                    </svg>
+                </div>
+                <div class="pano-date">31 марта 2026</div>
+                <div class="pano-desc">Панорама с дрона</div>
+            </a>
+
+            <!-- В будущем сюда можно добавлять новые карточки по аналогии -->
+            <!-- 
+            <a href="05.04.html" class="pano-card">
+                ... 
+            </a> 
+            -->
+
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 БЕРСО. Проектирование и благоустройство городской среды.
+    </footer>
+
+</body>
+</html>
